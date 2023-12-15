@@ -2,13 +2,13 @@ package q1;
 
 public class Investimento implements Comparable<Investimento>{
 	private String cpf;
-	private String tipoInvestimento;
+	private InvestType tipoInvestimento;
 	private Double taxaAoAno;
 	private Integer tempoEmDias;
 	private Double capitalInicial;
 	private static final double CDI = 4.9 / 100.0;
 
-	public Investimento(String cpf, String tipoInvestimento, Double taxaAoAno, Integer tempoEmDias,
+	public Investimento(String cpf, InvestType tipoInvestimento, Double taxaAoAno, Integer tempoEmDias,
 			Double capitalInicial) {
 		this.cpf = cpf;
 		this.tipoInvestimento = tipoInvestimento;
@@ -25,11 +25,11 @@ public class Investimento implements Comparable<Investimento>{
 		this.cpf = cpf;
 	}
 
-	public String getTipoInvestimento() {
+	public InvestType getTipoInvestimento() {
 		return tipoInvestimento;
 	}
 
-	public void setTipoInvestimento(String tipoInvestimento) {
+	public void setTipoInvestimento(InvestType tipoInvestimento) {
 		this.tipoInvestimento = tipoInvestimento;
 	}
 
@@ -67,7 +67,7 @@ public class Investimento implements Comparable<Investimento>{
 	}
 
 	public Double valorLiquido() {
-		if (tipoInvestimento.compareToIgnoreCase("CDB") == 0) {
+		if (this.tipoInvestimento == InvestType.CDB) {
 			double valorIR = 22.5 / 100.0;
 			if(tempoEmDias <= 360)
 				valorIR = 20.0 / 100.0;
