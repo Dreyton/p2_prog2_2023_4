@@ -23,7 +23,14 @@ public class Programa {
 				linha = sc.nextLine();
 				campos = linha.split(" ");
 				String cpf = campos[0];
-				String tipoInvestimento = campos[1];
+
+				InvestType tipoInvestimento = null;
+
+				// System.out.println(" comparando o " + campos[1]);
+				if(campos[1].compareToIgnoreCase("CDB") == 0) tipoInvestimento = InvestType.CDB;
+				if(campos[1].compareToIgnoreCase("LCI") == 0) tipoInvestimento = InvestType.LCI;
+				if(campos[1].compareToIgnoreCase("LCA") == 0) tipoInvestimento = InvestType.LCA;
+
 				Double taxaAoAno = Double.parseDouble(campos[2]);
 				Integer tempoEmDias = Integer.parseInt(campos[3]);
 				Double capitalInicial = Double.parseDouble(campos[4]);
